@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cornelius Igboanugwo | Senior Software Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0e27;
+            --bg-secondary: #131837;
+            --bg-card: #1a1f3a;
+            --accent-primary: #00d4ff;
+            --accent-secondary: #7c3aed;
+            --accent-gradient: linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%);
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border-color: rgba(0, 212, 255, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            opacity: 0.15;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(124, 58, 237, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(0, 212, 255, 0.2) 0%, transparent 40%);
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(5deg); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 2rem;
+            animation: slideDown 0.8s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .greeting {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent-primary);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .hero h1 .gradient-text {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.8s both;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease 1s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            animation: fadeInUp 1s ease 1.2s both;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: white;
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(0, 212, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-primary);
+            border: 2px solid var(--accent-primary);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 212, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent-primary);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-description {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--accent-gradient);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3.5rem;
+            top: 2rem;
+            width: 12px;
+            height: 12px;
+            background: var(--accent-primary);
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .timeline-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .timeline-company {
+            color: var(--accent-primary);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .timeline-date {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .timeline-description {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-top: 1rem;
+        }
+
+        .timeline-highlights {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .timeline-highlights li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .timeline-highlights li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent-primary);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-category {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .skill-category h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-tag {
+            padding: 0.5rem 1rem;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(0, 212, 255, 0.2);
+            color: var(--accent-primary);
+            transform: translateY(-2px);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent-gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.3);
+            border-color: var(--accent-primary);
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-icon {
+            font-size: 1.8rem;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            padding: 0.3rem 0.8rem;
+            background: rgba(124, 58, 237, 0.2);
+            color: var(--accent-secondary);
+            border-radius: 4px;
+        }
+
+        .project-impact {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--accent-primary);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-item a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent-primary);
+        }
+
+        .contact-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--accent-gradient);
+            color: white;
+            transform: translateY(-5px);
+            border-color: transparent;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+        }
+
+        footer p {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .fade-in:nth-child(1) { animation-delay: 0.1s; }
+        .fade-in:nth-child(2) { animation-delay: 0.2s; }
+        .fade-in:nth-child(3) { animation-delay: 0.3s; }
+        .fade-in:nth-child(4) { animation-delay: 0.4s; }
+        .fade-in:nth-child(5) { animation-delay: 0.5s; }
+        .fade-in:nth-child(6) { animation-delay: 0.6s; }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .projects-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline {
+                padding-left: 2rem;
+            }
+
+            .contact-info {
+                gap: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-gradient"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">CI</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="greeting">Hi, my name is</div>
+                <h1>Cornelius <span class="gradient-text">Igboanugwo</span></h1>
+                <h2 class="hero-subtitle">Senior Software Engineer</h2>
+                <p class="hero-description">
+                    I architect and build scalable, high-performance software solutions for banking, fintech, and healthcare. 
+                    With 9+ years of experience, I specialize in microservices architecture, cloud technologies, and creating 
+                    systems that drive business impact and deliver exceptional user experiences.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="section-header">
+            <span class="section-tag">// My Journey</span>
+            <h2 class="section-title">Professional Experience</h2>
+            <p class="section-description">
+                A track record of delivering innovative solutions and driving measurable business outcomes
+            </p>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item fade-in">
+                <div class="timeline-header">
+                    <div>
+                        <h3 class="timeline-title">Senior Software Engineer</h3>
+                        <div class="timeline-company">Equity Bank</div>
+                    </div>
+                    <div class="timeline-date">January 2023 - Present</div>
+                </div>
+                <p class="timeline-description">
+                    Leading the development of enterprise-grade conversational AI platforms and microservices architecture
+                </p>
+                <ul class="timeline-highlights">
+                    <li>Architected enterprise chatbot platform using Google Dialogflow and Microsoft Bot Framework, achieving 50% increase in customer self-service adoption</li>
+                    <li>Improved NLP intent recognition accuracy by 40% through advanced natural language processing implementations</li>
+                    <li>Optimized system performance with caching strategies, reducing response times by 30% and increasing throughput by 20%</li>
+                    <li>Maintained 99.9% uptime through comprehensive monitoring solutions and proactive incident management</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item fade-in">
+                <div class="timeline-header">
+                    <div>
+                        <h3 class="timeline-title">Senior Software Engineer</h3>
+                        <div class="timeline-company">Andela Inc</div>
+                    </div>
+                    <div class="timeline-date">January 2022 - December 2022</div>
+                </div>
+                <p class="timeline-description">
+                    Specialized in high-performance database optimization and distributed systems architecture
+                </p>
+                <ul class="timeline-highlights">
+                    <li>Optimized database performance with advanced SQL queries, functions, and stored procedures</li>
+                    <li>Implemented Kafka and RabbitMQ messaging systems for reliable real-time communication</li>
+                    <li>Engineered zero-duplication File Upload widget supporting complex business rules</li>
+                    <li>Designed distributed caching system using Redis Cache, significantly enhancing application performance</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item fade-in">
+                <div class="timeline-header">
+                    <div>
+                        <h3 class="timeline-title">Software Engineer</h3>
+                        <div class="timeline-company">Polaris Bank</div>
+                    </div>
+                    <div class="timeline-date">January 2018 - December 2021</div>
+                </div>
+                <p class="timeline-description">
+                    Drove digital transformation initiatives and customer-centric solutions
+                </p>
+                <ul class="timeline-highlights">
+                    <li>Developed digital lending application, reducing customer bank visits by 30%</li>
+                    <li>Built 24/7 complaint & enquiry services, improving resolution turnaround time by 60%</li>
+                    <li>Created real-time location service for branch/ATM finder, achieving 80% faster discovery</li>
+                    <li>Increased bank revenue by 15% through USSD application development</li>
+                    <li>Boosted customer onboarding by 65% via referral incentive program implementation</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item fade-in">
+                <div class="timeline-header">
+                    <div>
+                        <h3 class="timeline-title">Software Engineer</h3>
+                        <div class="timeline-company">BrinqAfrica</div>
+                    </div>
+                    <div class="timeline-date">June 2015 - December 2017</div>
+                </div>
+                <p class="timeline-description">
+                    Led modernization efforts and microservices migration
+                </p>
+                <ul class="timeline-highlights">
+                    <li>Streamlined customer onboarding and wallet generation, reducing wait time by 80%</li>
+                    <li>Led migration from monolithic to microservices architecture, increasing scalability by 30%</li>
+                    <li>Increased customer satisfaction by 60% through application revamps and new support modules</li>
+                    <li>Contributed to 35% profit increase through strategic technical implementations</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="section-header">
+            <span class="section-tag">// Tech Stack</span>
+            <h2 class="section-title">Technical Skills</h2>
+            <p class="section-description">
+                Comprehensive expertise across modern development technologies and frameworks
+            </p>
+        </div>
+
+        <div class="skills-grid">
+            <div class="skill-category fade-in">
+                <h3>💻 Languages & Frameworks</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">C#</span>
+                    <span class="skill-tag">ASP.NET Core</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">TypeScript</span>
+                </div>
+            </div>
+
+            <div class="skill-category fade-in">
+                <h3>☁️ Cloud & DevOps</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Microsoft Azure</span>
+                    <span class="skill-tag">AWS</span>
+                    <span class="skill-tag">GCP</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">CI/CD</span>
+                    <span class="skill-tag">Terraform</span>
+                </div>
+            </div>
+
+            <div class="skill-category fade-in">
+                <h3>🗄️ Databases</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">SQL Server</span>
+                    <span class="skill-tag">Redis</span>
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">MySQL</span>
+                    <span class="skill-tag">PostgreSQL</span>
+                </div>
+            </div>
+
+            <div class="skill-category fade-in">
+                <h3>📡 Messaging & APIs</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Apache Kafka</span>
+                    <span class="skill-tag">RabbitMQ</span>
+                    <span class="skill-tag">Azure Service Bus</span>
+                    <span class="skill-tag">RESTful APIs</span>
+                    <span class="skill-tag">SOAP</span>
+                </div>
+            </div>
+
+            <div class="skill-category fade-in">
+                <h3>🤖 AI & Chatbots</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Google Dialogflow</span>
+                    <span class="skill-tag">Microsoft Bot Framework</span>
+                    <span class="skill-tag">Cognitive Services</span>
+                    <span class="skill-tag">NLP</span>
+                </div>
+            </div>
+
+            <div class="skill-category fade-in">
+                <h3>🔐 Security & Tools</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">OAuth 2.0</span>
+                    <span class="skill-tag">OpenID Connect</span>
+                    <span class="skill-tag">IdentityServer4</span>
+                    <span class="skill-tag">Keycloak</span>
+                    <span class="skill-tag">Git</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="section-header">
+            <span class="section-tag">// Featured Work</span>
+            <h2 class="section-title">Key Projects</h2>
+            <p class="section-description">
+                Innovative solutions that delivered measurable business impact
+            </p>
+        </div>
+
+        <div class="projects-grid">
+            <div class="project-card fade-in">
+                <div class="project-content">
+                    <div class="project-header">
+                        <div>
+                            <h3 class="project-title">Enterprise Chatbot Platform</h3>
+                        </div>
+                        <div class="project-icon">🤖</div>
+                    </div>
+                    <p class="project-description">
+                        Architected and implemented an enterprise-grade conversational AI platform integrating 
+                        Google Dialogflow and Microsoft Bot Framework with microservices architecture. Deployed 
+                        on Azure with comprehensive monitoring and security protocols.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Dialogflow</span>
+                        <span class="tech-badge">Bot Framework</span>
+                        <span class="tech-badge">.NET Core</span>
+                        <span class="tech-badge">Azure</span>
+                        <span class="tech-badge">Docker</span>
+                    </div>
+                    <div class="project-impact">
+                        📈 50% increase in self-service adoption | 40% improved NLP accuracy
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-content">
+                    <div class="project-header">
+                        <div>
+                            <h3 class="project-title">Digital Lending Application</h3>
+                        </div>
+                        <div class="project-icon">💰</div>
+                    </div>
+                    <p class="project-description">
+                        Developed a seamless digital lending platform enabling instant loan requests and 
+                        disbursement. Eliminated the need for physical bank visits and streamlined the 
+                        entire loan approval workflow with automated decisioning.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-badge">ASP.NET Core</span>
+                        <span class="tech-badge">SQL Server</span>
+                        <span class="tech-badge">REST APIs</span>
+                        <span class="tech-badge">Azure</span>
+                    </div>
+                    <div class="project-impact">
+                        📈 30% reduction in customer bank visits
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-content">
+                    <div class="project-header">
+                        <div>
+                            <h3 class="project-title">Microservices Migration</h3>
+                        </div>
+                        <div class="project-icon">🏗️</div>
+                    </div>
+                    <p class="project-description">
+                        Led comprehensive migration from monolithic architecture to microservices using 
+                        REST APIs, ASP.NET Core, Apache Kafka, and Microsoft Azure. Implemented event-driven 
+                        architecture for improved scalability and system reliability.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Microservices</span>
+                        <span class="tech-badge">Apache Kafka</span>
+                        <span class="tech-badge">ASP.NET Core</span>
+                        <span class="tech-badge">Azure</span>
+                    </div>
+                    <div class="project-impact">
+                        📈 30% increase in scalability
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-content">
+                    <div class="project-header">
+                        <div>
+                            <h3 class="project-title">24/7 Customer Support System</h3>
+                        </div>
+                        <div class="project-icon">🎯</div>
+                    </div>
+                    <p class="project-description">
+                        Spearheaded development of round-the-clock complaint and enquiry services with 
+                        intelligent routing, automated responses, and comprehensive ticket management. 
+                        Integrated with multiple backend systems for seamless data flow.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-badge">C#</span>
+                        <span class="tech-badge">REST APIs</span>
+                        <span class="tech-badge">SQL Server</span>
+                        <span class="tech-badge">RabbitMQ</span>
+                    </div>
+                    <div class="project-impact">
+                        📈 60% improvement in resolution turnaround time
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-content">
+                    <div class="project-header">
+                        <div>
+                            <h3 class="project-title">Real-Time Location Service</h3>
+                        </div>
+                        <div class="project-icon">📍</div>
+                    </div>
+                    <p class="project-description">
+                        Created an intelligent location service integrated with chatbot to help customers 
+                        discover nearby branches, ATMs, and agents in real-time. Implemented geospatial 
+                        queries and mapping APIs for accurate location detection.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Geospatial APIs</span>
+                        <span class="tech-badge">Chatbot Integration</span>
+                        <span class="tech-badge">SQL Server</span>
+                        <span class="tech-badge">REST APIs</span>
+                    </div>
+                    <div class="project-impact">
+                        📈 80% faster location discovery
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card fade-in">
+                <div class="project-content">
+                    <div class="project-header">
+                        <div>
+                            <h3 class="project-title">Distributed Caching System</h3>
+                        </div>
+                        <div class="project-icon">⚡</div>
+                    </div>
+                    <p class="project-description">
+                        Engineered a high-performance distributed caching solution using Redis Cache to 
+                        optimize application performance and reduce database load. Implemented intelligent 
+                        cache invalidation strategies and monitoring.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-badge">Redis</span>
+                        <span class="tech-badge">.NET Core</span>
+                        <span class="tech-badge">Distributed Systems</span>
+                        <span class="tech-badge">Performance Optimization</span>
+                    </div>
+                    <div class="project-impact">
+                        📈 Significant performance enhancement
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="contact-container">
+            <div class="section-header">
+                <span class="section-tag">// Let's Connect</span>
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-description">
+                    I'm currently open to new opportunities and interesting projects. 
+                    Feel free to reach out if you'd like to collaborate or just chat about technology!
+                </p>
+            </div>
+
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-label">Email</div>
+                    <a href="mailto:onyedikachi.igboanugwo@gmail.com">onyedikachi.igboanugwo@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">Phone</div>
+                    <a href="tel:+12269751059">+1 226 975-1059</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">Location</div>
+                    <span style="color: var(--text-secondary);">Windsor, Ontario, Canada</span>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <a href="https://linkedin.com/in/cornelius-igboanugwo" target="_blank" class="social-link" title="LinkedIn">
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                </a>
+                <a href="https://github.com/cornelius-igboanugwo" target="_blank" class="social-link" title="GitHub">
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div style="margin-top: 3rem;">
+                <a href="mailto:onyedikachi.igboanugwo@gmail.com" class="btn btn-primary">Say Hello</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Cornelius Igboanugwo. Built with passion and precision.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
